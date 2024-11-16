@@ -6,23 +6,23 @@ money = []
 loan_taken = {}
 #ln = loan
 class Starting_money:
-  def add_user(num_of_players):
+  def add_user(self, num_of_players):
 
     for i in range(num_of_players):
 
       name = input(colored("Enter the name of the player: ","blue")).upper() # .upper() is used to make the name of the user in lower case
       all_users.append(name) # appending the name of the user to the list   
-  def add_money(num_of_players):
+  def add_money(self, num_of_players):
 
     for i in range(num_of_players):  # num_of_players is the number of players in the game
 
-      money.append(1500)         # adding money to the index of players in another array 
-  def generate_loan_dict():
+      money.append(2000)         # adding money to the index of players in another array 
+  def generate_loan_dict(self):
 
     for i in range(len(all_users)): # len(all_users) is the number of players in the game
 
       loan_taken[all_users[i]] = 0 # adding the loan taken to the dictionary
-class main_bank:
+class Main_bank:
   def __init__(self, pot=0):
     self.pot = pot
   def transfer_money(self, user_to_deduct_from, user_to_add_from, amount):
@@ -52,8 +52,8 @@ class main_bank:
     cprint(f"Current balance of {user} is "+ str(money[user_name_index]),"cyan") #printing the balance of the user to add money to#2 inputs
   def pay_loan(self,user, amt_to_pay_ln):
     user_name_index = all_users.index(user)#amount to pay loan
-    loan_taken[user] = loan_taken.get(user) - ammount_to_pay_loan
-    money[user_name_index] -= ammount_to_pay_loan #deducting the loan taken from the dictionary
+    loan_taken[user] = loan_taken.get(user) - amt_to_pay_ln
+    money[user_name_index] -= amt_to_pay_ln #deducting the loan taken from the dictionary
     cprint(f"{user} will have to pay ${loan_taken[user]}","cyan") #printing the loan taken from the dictionary
     cprint(f"Current balance of {user}: " + str(money[user_name_index]),"blue") #printing the balance of the user to pay loan
   def show_money(self):
@@ -75,14 +75,15 @@ class main_bank:
     pot = 0
     money[index_name] += amount
 if __name__ == "__main__":
-  main_bank = main_bank()
+  main_bank = Main_bank()
   f = Figlet(font='standard')
   print(colored(f.renderText('WELCOME TO MONOPOLY BANK ONLINE!!'), 'blue'))
   cprint("Docs For the Bank Manager is at https://pmdev.in/docs/bank_manager.html",'blue')
   number_of_playing_players = int(input(colored("Enter the number of people who will play the game: ","cyan")))
-  Starting_money.add_user(number_of_playing_players)
-  Starting_money.add_money(number_of_playing_players)
-  Starting_money.generate_loan_dict()
+  starting_money = Starting_money()
+  starting_money.add_user(number_of_playing_players)
+  starting_money.add_money(number_of_playing_players)
+  starting_money.generate_loan_dict()
   while True:
     cprint("Check Balance Of Players: 1","green")
     cprint("Take Turn: 2","red")
