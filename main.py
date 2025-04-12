@@ -16,7 +16,7 @@ class Starting_money:
 
     for i in range(num_of_players):  # num_of_players is the number of players in the game
 
-      money.append(2000)         # adding money to the index of players in another array 
+      money.append(1500)         # adding money to the index of players in another array 
   def generate_loan_dict(self):
 
     for i in range(len(all_users)): # len(all_users) is the number of players in the game
